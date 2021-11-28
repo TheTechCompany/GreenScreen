@@ -7,7 +7,7 @@ export class GreenScreen {
 	private assetStore: AssetStore;
 
 	constructor(){
-		this.displayManager = new DisplayManager();
+		this.displayManager = new DisplayManager('http://localhost:3000/asset1/index.html');
 		this.assetStore = new AssetStore();
 	}
 

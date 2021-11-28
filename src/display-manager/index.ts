@@ -1,9 +1,9 @@
 import puppeteer, { Browser, Page } from 'puppeteer'
 
 export class DisplayManager {
-	private browser: Browser;
+	private browser?: Browser;
 
-	private page: Page;
+	private page?: Page;
 
 	private baseUrl = 'https://hexhive.io'
 
@@ -22,8 +22,8 @@ export class DisplayManager {
 			args: ['--kiosk', '--disable-infobars']
 		})
 
-		this.page = await this.browser.newPage()
+		this.page = await this.browser?.newPage()
 
-		this.page.goto(this.baseUrl)
+		this.page?.goto(this.baseUrl)
 	}
 }
