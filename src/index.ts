@@ -5,8 +5,8 @@ import puppeteer from 'puppeteer'
 		headless: false,
 		ignoreDefaultArgs: ['--enable-automation'],
 		defaultViewport: {
-			width: 1080,
-			height: 1920
+			width: 1920, //1080
+			height: 1080 //1920
 		},
 		args: ['--kiosk', '--disable-infobars']
 	})
