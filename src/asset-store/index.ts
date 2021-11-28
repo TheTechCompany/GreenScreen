@@ -32,9 +32,11 @@ export class AssetStore {
 
 	async pullAll(){
 		await Promise.all(this.manifest.map(async (manifestItem) => {
+			console.log(`Pulling ${manifestItem.name}`)
 			const data = await this.pull(manifestItem.assetFolder)
 			if(!data) return;
 			await promises.writeFile(`${this.assetStoragePath}/${manifestItem.id}`, data)
+			console.log(`Pulled ${manifestItem.name}`)
 
 		}))
 	}
