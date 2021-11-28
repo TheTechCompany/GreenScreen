@@ -3,6 +3,7 @@ import puppeteer from 'puppeteer'
 (async () => {
 	const browser = await puppeteer.launch({
 		headless: false,
+		ignoreDefaultArgs: ['--enable-automation'],
 		defaultViewport: {
 			width: 1080,
 			height: 1920
