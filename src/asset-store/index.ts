@@ -18,6 +18,8 @@ export class AssetStore {
 
 	private assetStoragePath?: string; //Storage path to store assets
 
+	private currentAsset: number = 0;
+
 	private manifest : {
 		id?: string,
 		name?: string,
@@ -45,6 +47,14 @@ export class AssetStore {
 			console.log(`Pulled ${manifestItem.name}`)
 
 		}))
+	}
+
+
+	getNextAsset(){
+		const asset = this.manifest[this.currentAsset]
+		this.currentAsset++
+		if(this.currentAsset > this.manifest.length) this.currentAsset = 0;
+		return asset
 	}
 
 	async loadManifest(){

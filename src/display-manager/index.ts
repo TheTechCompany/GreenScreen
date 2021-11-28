@@ -26,4 +26,8 @@ export class DisplayManager {
 
 		this.page?.goto(this.baseUrl)
 	}
+
+	async play(id: string){
+		await this.page?.goto(`http://localhost:3000/${id}`)
+	}
 }
