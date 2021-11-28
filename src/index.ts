@@ -28,7 +28,9 @@ export class GreenScreen {
 			
 			const asset = this.assetStore.getNextAsset()
 
-			await this.displayManager.play(asset.assetFolder)
+			if(asset.assetFolder){
+				await this.displayManager.play(asset?.assetFolder)
+			}
 
 			await new Promise((resolve) => setTimeout(resolve, 15000))
 
