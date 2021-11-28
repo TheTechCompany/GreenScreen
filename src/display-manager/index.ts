@@ -24,7 +24,7 @@ export class DisplayManager {
 
 		this.page = await this.browser?.newPage()
 
-		this.page?.goto(this.baseUrl)
+		await this.page?.goto(this.baseUrl)
 	}
 
 	async play(id: string){
