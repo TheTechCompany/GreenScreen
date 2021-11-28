@@ -9,7 +9,7 @@ export class GreenScreen {
 	private running: boolean = false;
 
 	constructor(){
-		this.displayManager = new DisplayManager('http://localhost:3000/123');
+		this.displayManager = new DisplayManager();
 		this.assetStore = new AssetStore({
 			assetStoreUrl: `http://3.105.228.88:4200`,
 			assetStoragePath: `C:\\Users\\Administrator\\Documents\\`
