@@ -2,6 +2,7 @@ import { IPFS, create } from 'ipfs';
 import { AssetStoreServer } from './server';
 import axios from 'axios';
 import { promises } from 'fs';
+import tar from 'tar';
 
 export interface AssetStoreConfiguration {
 	assetStoreUrl?: string;
@@ -36,6 +37,10 @@ export class AssetStore {
 			const data = await this.pull(manifestItem.assetFolder)
 			if(!data) return;
 			await promises.writeFile(`${this.assetStoragePath}/${manifestItem.id}`, data)
+
+			await tar.x({
+				file: `${this.assetStoragePath}/${manifestItem.id}`
+			})
 			console.log(`Pulled ${manifestItem.name}`)
 
 		}))
