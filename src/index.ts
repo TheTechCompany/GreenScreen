@@ -1,17 +1,19 @@
 import puppeteer from 'puppeteer'
+import { AssetStore } from './asset-store';
+import { DisplayManager } from './display-manager';
 
-(async () => {
-	const browser = await puppeteer.launch({
-		headless: false,
-		ignoreDefaultArgs: ['--enable-automation'],
-		defaultViewport: {
-			width: 1920, //1080
-			height: 1080 //1920
-		},
-		args: ['--kiosk', '--disable-infobars']
-	})
+export class GreenScreen {
+	private displayManager: DisplayManager;
+	private assetStore: AssetStore;
 
-	const page = await browser.newPage()
+	constructor(){
+		this.displayManager = new DisplayManager();
+		this.assetStore = new AssetStore();
+	}
 
-	await page.goto('https://hexhive.io')
-})()
+	async start(){
+		await this.assetStore.init()
+		await this.displayManager.init()
+	}
+
+}
