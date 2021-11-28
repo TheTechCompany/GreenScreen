@@ -39,7 +39,8 @@ export class AssetStore {
 			await promises.writeFile(`${this.assetStoragePath}/${manifestItem.id}`, data)
 
 			await tar.x({
-				file: `${this.assetStoragePath}/${manifestItem.id}`
+				file: `${this.assetStoragePath}/${manifestItem.id}`,
+				cwd: this.assetStoragePath,
 			})
 			console.log(`Pulled ${manifestItem.name}`)
 
