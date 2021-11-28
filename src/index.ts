@@ -3,7 +3,11 @@ import puppeteer from 'puppeteer'
 (async () => {
 	const browser = await puppeteer.launch({
 		headless: false,
-		args: ['--kiosk']
+		defaultViewport: {
+			width: 1080,
+			height: 1920
+		},
+		args: ['--kiosk', '--disable-infobars']
 	})
 
 	const page = await browser.newPage()
