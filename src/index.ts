@@ -8,7 +8,10 @@ export class GreenScreen {
 
 	constructor(){
 		this.displayManager = new DisplayManager('http://localhost:3000/asset1/index.html');
-		this.assetStore = new AssetStore();
+		this.assetStore = new AssetStore({
+			assetStoreUrl: `http://192.168.255.66`,
+			assetStoragePath: `/tmp/`
+		});
 	}
 
 	async start(){
