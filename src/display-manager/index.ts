@@ -23,11 +23,19 @@ export class DisplayManager {
 		})
 
 		this.page = await this.browser?.newPage()
+		try{
+			await this.page?.goto(this.baseUrl)
 
-		await this.page?.goto(this.baseUrl)
+		}catch(e){
+
+		}
 	}
 
 	async play(id: string){
-		await this.page?.goto(`http://localhost:3000/${id}`)
+		try{
+			await this.page?.goto(`http://localhost:3000/${id}`)
+		}catch(e){
+			
+		}
 	}
 }
