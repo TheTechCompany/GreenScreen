@@ -28,7 +28,7 @@ export class GreenScreen {
 			
 			const asset = this.assetStore.getNextAsset()
 
-			if(asset.assetFolder){
+			if(asset?.assetFolder){
 				await this.displayManager.play(asset?.assetFolder)
 			}
 
