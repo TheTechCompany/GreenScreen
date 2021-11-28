@@ -9,7 +9,7 @@ export class GreenScreen {
 	private running: boolean = false;
 
 	constructor(){
-		this.displayManager = new DisplayManager('http://localhost:3000');
+		this.displayManager = new DisplayManager('http://localhost:3000/123');
 		this.assetStore = new AssetStore({
 			assetStoreUrl: `http://3.105.228.88:4200`,
 			assetStoragePath: `C:\\Users\\Administrator\\Documents\\`
@@ -29,7 +29,7 @@ export class GreenScreen {
 			const asset = this.assetStore.getNextAsset()
 
 			await this.displayManager.play(asset.assetFolder)
-			
+
 			await new Promise((resolve) => setTimeout(resolve, 15000))
 
 		}
