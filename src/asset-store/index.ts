@@ -30,7 +30,7 @@ export class AssetStore {
 		this.assetStoreUrl = opts.assetStoreUrl
 		this.assetStoragePath = opts.assetStoragePath || '/tmp/'
 
-		this.server = new AssetStoreServer();
+		this.server = new AssetStoreServer(this.assetStoragePath);
 	}
 
 	async pullAll(){

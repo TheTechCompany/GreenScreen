@@ -4,9 +4,9 @@ import path from 'path';
 export class AssetStoreServer {
 	private app : Express;
 
-	constructor(){
+	constructor(storagePath: string){
 		this.app = express()
-		this.app.use(express.static(`C:\\Users\\Administrator\\Documents\\`))
+		this.app.use(express.static(storagePath || `C:\\Users\\Administrator\\Documents\\`))
 	}
 
 	start(){

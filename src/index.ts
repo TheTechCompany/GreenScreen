@@ -12,7 +12,7 @@ export class GreenScreen {
 		this.displayManager = new DisplayManager();
 		this.assetStore = new AssetStore({
 			assetStoreUrl: `http://3.105.228.88:4200`,
-			assetStoragePath: `C:\\Users\\Administrator\\Documents\\`
+			assetStoragePath:  process.env.USERPROFILE+'\\Documents' || `C:\\Users\\Administrator\\Documents\\`
 		});
 	}
 
