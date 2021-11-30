@@ -56,9 +56,13 @@ export class AssetStore {
 
 
 	getNextAsset(){
-		const asset = this.manifest[this.currentAsset]
+		let asset = this.manifest[this.currentAsset]
 		this.currentAsset++
-		if(this.currentAsset > this.manifest.length) this.currentAsset = 0;
+		if(this.currentAsset > this.manifest.length) {
+			this.currentAsset = 0;
+			asset = this.manifest[this.currentAsset]
+		}
+
 		return asset
 	}
 
