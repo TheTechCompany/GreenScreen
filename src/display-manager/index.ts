@@ -1,4 +1,5 @@
 import puppeteer, { Browser, Page } from 'puppeteer'
+import { TelemetryService } from '../telemetry';
 
 export class DisplayManager {
 	private browser?: Browser;
@@ -7,8 +8,15 @@ export class DisplayManager {
 
 	private baseUrl = 'https://hexhive.io'
 
-	constructor(defaultUrl?: string){
+	public currentAsset: string | undefined = undefined;
+
+	private telemtry: TelemetryService;
+
+	private startTime?: number;
+
+	constructor(telemtry: TelemetryService, defaultUrl?: string){
 		this.baseUrl = defaultUrl || this.baseUrl
+		this.telemtry = telemtry
 	}
 
 	async init(){
@@ -33,7 +41,14 @@ export class DisplayManager {
 
 	async play(id: string){
 		try{
+			if(this.startTime){
+				const time = Date.now() - this.startTime
+				await this.telemtry.sendEvent({event: 'campaign-play', properties: {time, id}, source: 'display-manager'})
+			}
+			this.currentAsset = id;
+			this.startTime = Date.now()
 			await this.page?.goto(`http://localhost:3000/${id}`)
+	
 		}catch(e){
 
 		}

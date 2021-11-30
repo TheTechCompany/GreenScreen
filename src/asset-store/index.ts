@@ -3,10 +3,15 @@ import { AssetStoreServer } from './server';
 import axios from 'axios';
 import { promises } from 'fs';
 import tar from 'tar';
+import { TelemetryService } from '../telemetry';
+import { DisplayManager } from '../display-manager';
 
 export interface AssetStoreConfiguration {
 	assetStoreUrl?: string;
 	assetStoragePath?: string;
+
+	telemtry: TelemetryService;
+	displayManager: DisplayManager;
 }
 
 export class AssetStore {
@@ -30,7 +35,7 @@ export class AssetStore {
 		this.assetStoreUrl = opts.assetStoreUrl
 		this.assetStoragePath = opts.assetStoragePath || '/tmp/'
 
-		this.server = new AssetStoreServer(this.assetStoragePath);
+		this.server = new AssetStoreServer(this.assetStoragePath, opts.telemtry, opts.displayManager);
 	}
 
 	async pullAll(){
