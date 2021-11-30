@@ -63,7 +63,7 @@ export class AssetStore {
 	}
 
 	async loadManifest(){
-		const resp = await axios.get(`${this.assetStoreUrl}/distribute`)
+		const resp = await axios.get(`${this.assetStoreUrl}/api/distribute`)
 		this.manifest = resp.data.campaigns;
 	}
 
