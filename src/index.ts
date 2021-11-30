@@ -36,10 +36,11 @@ export class GreenScreen {
 
 	async schedule(){
 		while(this.running){
-			
+			console.log("Loop")
 			const asset = this.assetStore.getNextAsset()
-
+			console.log("Asset", asset)
 			if(asset?.assetFolder){
+				console.log("Play")
 				await this.displayManager.play(asset?.assetFolder)
 			}
 
