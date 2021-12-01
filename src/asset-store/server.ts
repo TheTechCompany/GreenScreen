@@ -1,5 +1,6 @@
 import express, {Express} from 'express'
 import path from 'path';
+import bodyParser from 'body-parser';
 import { DisplayManager } from '../display-manager';
 import { TelemetryService } from '../telemetry';
 
@@ -12,7 +13,7 @@ export class AssetStoreServer {
 	constructor(storagePath: string, telemetry: TelemetryService, displayManager: DisplayManager){
 		this.app = express()
 		this.app.use(express.static(storagePath || `C:\\Users\\Administrator\\Documents\\`))
-		
+		this.app.use(bodyParser.json())
 		this.app.get(`/api/device`, this.deviceInfo.bind(this))
 		this.app.post(`/api/telemetry`, this.telemtryListener.bind(this));
 		
