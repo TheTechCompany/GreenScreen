@@ -1,4 +1,5 @@
 import puppeteer, { Browser, Page } from 'puppeteer'
+import analytics from '../analytics';
 import { TelemetryService } from '../telemetry';
 
 export class DisplayManager {
@@ -48,6 +49,7 @@ export class DisplayManager {
 			this.currentAsset = id;
 			this.startTime = Date.now()
 			await this.page?.goto(`http://localhost:3000/${id}`)
+			await this.page?.addScriptTag({content: analytics})
 	
 		}catch(e){
 
