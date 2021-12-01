@@ -5,7 +5,10 @@ export default `
 	links.forEach(link => {
 		link.addEventListener('click', (e) => {
 			const href = e.target.href;
-			const properties = Array.from(e.target.attributes).map((x) => ({name: x.name, value: x.value}) )
+			const properties = Array.from(e.target.attributes).map((x) => ({name: x.name, value: x.value})).reduce((prev, curr) => ({
+				...prev,
+				[curr.name]: curr.value
+			}))
 
 			fetch('http://localhost:3000/api/telemetry', {
 				method: 'POST',
